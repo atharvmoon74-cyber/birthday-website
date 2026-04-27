@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Samiksha 💖</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 1 — OPENING (Black Screen)
+═══════════════════════════════════════════════ -->
+<section id="scene-opening" class="scene active">
+  <canvas id="particle-canvas"></canvas>
+  <div class="opening-content">
+    <div class="typing-line" id="line1">To the most important person in my life…</div>
+    <div class="typing-line hidden" id="line2">Happy Birthday</div>
+    <div class="typing-line name-glow hidden" id="line3">Samiksha 🎂💖</div>
+    <button class="glow-btn hidden" id="opening-btn" onclick="goToScene('scene-stars')">Continue ✨</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 2 — STARRY NIGHT / NAME IN STARS
+═══════════════════════════════════════════════ -->
+<section id="scene-stars" class="scene">
+  <canvas id="star-canvas"></canvas>
+  <div class="stars-content">
+    <div class="star-name" id="star-name">✨ S A M I K S H A ✨</div>
+    <p class="star-subtitle">A star was born on this day…</p>
+    <button class="glow-btn" onclick="explodeStars()">Click the Star 🌟</button>
+  </div>
+  <div id="confetti-burst"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 3 — GIFT BOX (Layered Boxes)
+═══════════════════════════════════════════════ -->
+<section id="scene-gift" class="scene">
+  <div class="gift-bg"></div>
+  <div class="gift-area">
+    <p class="gift-text" id="gift-text">I made something special for you…</p>
+    <div class="gift-box-wrap" id="gift-wrap">
+      <div class="gift-box" id="gift-box" onclick="openBox()">
+        <div class="box-lid" id="box-lid">
+          <div class="bow"></div>
+        </div>
+        <div class="box-body">
+          <div class="ribbon-h"></div>
+          <div class="ribbon-v"></div>
+        </div>
+      </div>
+      <p class="tap-hint">Tap the box 🎁</p>
+    </div>
+    <!-- Inner messages per layer -->
+    <div class="box-message hidden" id="msg1">
+      <span>💛</span>
+      <p>"Because you deserve all the happiness in the world…"</p>
+      <button class="glow-btn sm" onclick="nextLayer(2)">Open more 🎀</button>
+    </div>
+    <div class="box-message hidden" id="msg2">
+      <span>💜</span>
+      <p>"Because you make my life so much better just by being in it…"</p>
+      <button class="glow-btn sm" onclick="nextLayer(3)">One more… 🎁</button>
+    </div>
+    <div class="box-message hidden" id="msg3">
+      <span>💌</span>
+      <p>"Because there's a letter inside… written just for you."</p>
+      <button class="glow-btn" onclick="goToScene('scene-letter')">Read the Letter 💌</button>
+    </div>
+  </div>
+  <div class="floating-ribbons" id="ribbons"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 4 — LETTER
+═══════════════════════════════════════════════ -->
+<section id="scene-letter" class="scene">
+  <div class="letter-bg"></div>
+  <div class="hearts-float" id="hearts-float"></div>
+  <div class="letter-wrap">
+    <div class="letter-paper">
+      <div class="letter-header">
+        <span>💌</span>
+        <h2>A Letter For You, Samu</h2>
+        <span>💌</span>
+      </div>
+      <div class="letter-body" id="letter-body">
+        <!-- Lines typed in by JS -->
+      </div>
+      <div class="letter-sign hidden" id="letter-sign">
+        <p>— Always yours,</p>
+        <p class="sign-name">Your God of all time 💫</p>
+      </div>
+    </div>
+    <button class="glow-btn hidden" id="memories-btn" onclick="goToScene('scene-memories')">
+      See Our Memories 📸
+    </button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 5 — MEMORIES GALLERY
+═══════════════════════════════════════════════ -->
+<section id="scene-memories" class="scene">
+  <div class="memories-bg"></div>
+  <h2 class="memories-title">Our Beautiful Moments 📸</h2>
+  <div class="polaroid-grid" id="polaroid-grid">
+    <!-- Polaroids injected by JS — add your images to images/ folder -->
+  </div>
+  <button class="glow-btn" style="margin-top:2rem" onclick="goToScene('scene-cake')">Next 🎂</button>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 6 — CAKE
+═══════════════════════════════════════════════ -->
+<section id="scene-cake" class="scene">
+  <div class="cake-bg"></div>
+  <div class="cake-area">
+    <div class="cake-container" id="cake-container">
+      <div class="cake-top-tier">
+        <div class="candles" id="candles">
+          <div class="candle"><div class="flame" id="f1"></div></div>
+          <div class="candle"><div class="flame" id="f2"></div></div>
+          <div class="candle"><div class="flame" id="f3"></div></div>
+          <div class="candle"><div class="flame" id="f4"></div></div>
+          <div class="candle"><div class="flame" id="f5"></div></div>
+        </div>
+        <div class="cake-tier tier1"></div>
+      </div>
+      <div class="cake-tier tier2"></div>
+      <div class="cake-tier tier3"></div>
+      <div class="cake-plate"></div>
+    </div>
+    <p class="cake-text" id="cake-text">Make a wish, Samiksha… 🌠</p>
+    <button class="glow-btn" id="blow-btn" onclick="blowCandles()">Blow the candles 🕯️</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 7 — CELEBRATION EXPLOSION
+═══════════════════════════════════════════════ -->
+<section id="scene-celebrate" class="scene">
+  <canvas id="firework-canvas"></canvas>
+  <div class="balloons-wrap" id="balloons-wrap"></div>
+  <div class="torans" id="torans"></div>
+  <div class="celebrate-text">
+    <h1 class="big-hbd" id="big-hbd">HAPPY BIRTHDAY</h1>
+    <h1 class="big-name-cel">SAMIKSHA 🎉💖</h1>
+    <div class="sparkle-row" id="sparkle-row"></div>
+  </div>
+  <button class="glow-btn" style="margin-top:2rem;z-index:10;position:relative" onclick="goToScene('scene-final')">
+    One Last Thing… 💖
+  </button>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 8 — FINAL EMOTIONAL MESSAGE
+═══════════════════════════════════════════════ -->
+<section id="scene-final" class="scene">
+  <canvas id="soft-canvas"></canvas>
+  <div class="final-content">
+    <div class="final-msg" id="final-msg">
+      <p class="final-line" style="animation-delay:0.5s">"You're not just my bestie…"</p>
+      <p class="final-line" style="animation-delay:1.5s">"You're my happiness."</p>
+      <p class="final-line" style="animation-delay:2.5s">"You're my safe place."</p>
+      <p class="final-line" style="animation-delay:3.5s">"You're my Samu. 💖"</p>
+    </div>
+    <div class="final-btns hidden" id="final-btns">
+      <button class="glow-btn" onclick="goToScene('scene-opening')">Replay 🔁</button>
+      <button class="glow-btn gold" onclick="goToScene('scene-secret')">One more thing… 🎁</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SCENE 9 — SECRET SURPRISE
+═══════════════════════════════════════════════ -->
+<section id="scene-secret" class="scene">
+  <div class="secret-bg"></div>
+  <div class="secret-content">
+    <div class="secret-envelope" id="secret-envelope" onclick="openEnvelope()">
+      <div class="envelope-flap" id="env-flap"></div>
+      <div class="envelope-body">
+        <span>💌</span>
+      </div>
+    </div>
+    <p class="secret-hint">Tap the envelope…</p>
+    <div class="secret-note hidden" id="secret-note">
+      <p>🌸 Thank you for being in my life.</p>
+      <p>🌸 Thank you for your kaleshi moments that I secretly love.</p>
+      <p>🌸 Thank you for your animal love that steals all your attention 😂</p>
+      <p>🌸 Thank you for being my comfort in every storm.</p>
+      <p>🌸 I love you, Samu. Always. 💖</p>
+    </div>
+    <button class="glow-btn hidden" id="replay-final" onclick="goToScene('scene-opening')">Start Over 🔁</button>
+  </div>
+</section>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop>
+  <!-- Place your music file as audio/music.mp3 -->
+  <source src="audio/music.mp3" type="audio/mpeg" />
+</audio>
+
+<div class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Toggle music">🎵</div>
+
+<script src="js/particles.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/fireworks.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
