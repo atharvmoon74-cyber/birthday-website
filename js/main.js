@@ -64,7 +64,7 @@ function initOpening() {
   const lines = [
     { el:l1, text:"To the most important person in my life…",     delay:600  },
     { el:l2, text:"Happy Birthday",                                delay:3500 },
-    { el:l3, text:"Samiksha 🎂💖",                                 delay:5500 },
+    { el:l3, text:"ANUSHKA 🎂💖",                                 delay:5500 },
   ];
 
   lines.forEach(({el, text, delay}) => {
